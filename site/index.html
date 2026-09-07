@@ -1,12 +1,277 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ember</title>
+<title>Ember — a solar-powered local AI for the commons</title>
+<meta name="description" content="Ember is a solar-powered local AI proposed for a street window in Chamberí, Madrid. They run only on the sun they collect, sleep when it is gone, and turn each season into a commons-licensed book.">
+<meta property="og:title" content="Ember — a solar-powered local AI for the commons">
+<meta property="og:description" content="A solar-powered local AI for a street window in Chamberí, Madrid. Proposed for the KNOWCASE Open Call 2027.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#FACECF; --green:#91C63F; --blue:#302C80; --white:#F9F9F6;
+  --grey:#333333; --beige:#EDDED3; --grey-mid:#6E6E6E;
+  --line:rgba(48,44,128,0.28); --orange:#FF5A1F;
+  --mono:"Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--grey);font-family:var(--mono);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--pink)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+.eyebrow{display:flex;align-items:center;gap:10px;font-weight:700;font-size:11px;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--blue);margin:0 0 18px}
+.eyebrow::before{content:"";width:20px;height:1px;background:currentColor;flex:0 0 20px}
+.eyebrow.muted{color:var(--grey-mid)}
+
+header{border-bottom:1px solid var(--line);padding:40px 0 44px}
+header img.logo{height:56px;margin-bottom:32px}
+h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.03em;font-weight:400;margin:0 0 18px}
+.tagline{font-size:clamp(17px,2.2vw,22px);line-height:1.4;max-width:30ch;margin:0 0 26px;color:var(--grey)}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+.badge{font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px}
+.badge.live{background:var(--green);color:var(--grey)}
+.badge.blue{background:var(--blue);color:var(--white)}
+.badge.ghost{border:1px solid var(--line);color:var(--blue)}
+
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(22px,3vw,30px);line-height:1.2;font-weight:700;letter-spacing:-.01em;margin:0 0 20px;color:var(--blue)}
+h3{font-size:16px;font-weight:700;margin:26px 0 6px}
+p{margin:0 0 16px;max-width:68ch}
+.lead p{font-size:clamp(16px,1.7vw,18px)}
+
+figure{margin:28px 0 0;border:1px solid var(--line);background:var(--white)}
+figure img{width:100%}
+figcaption{font-size:13px;line-height:1.55;color:var(--grey-mid);padding:14px 16px;border-top:1px solid var(--line)}
+figcaption b{color:var(--grey)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:8px}
+.card{border:1px solid var(--line);padding:22px}
+.card.warm{background:var(--beige)}
+.card p{margin:0;font-size:14px;line-height:1.6}
+.card p + p{margin-top:10px}
+
+.chan{list-style:none;margin:0;padding:0}
+.chan li{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.chan li:last-child{border-bottom:none}
+.chan b{flex:0 0 132px;color:var(--blue)}
+.dot{display:inline-block;width:9px;height:9px;background:var(--orange);flex:0 0 9px;margin-top:8px}
+
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.person h3{margin-top:0}
+.person p{font-size:14px;line-height:1.6}
+.role{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-mid);margin:0 0 8px}
+
+footer{padding:44px 0 64px;font-size:13px;line-height:1.7;color:var(--grey-mid)}
+footer p{max-width:70ch}
+footer strong{color:var(--grey)}
+.note{border-left:3px solid var(--orange);padding-left:16px;margin-top:24px}
+</style>
 </head>
 <body>
-<h1>Ember</h1>
-<p>Site placeholder. Nothing built yet.</p>
+
+<header>
+  <div class="wrap">
+    <img class="logo" src="assets/logo.svg" alt="Ember">
+    <h1>Ember</h1>
+    <p class="tagline">A solar-powered local AI who lives in a street window, and runs only on
+      the sun they collect.</p>
+    <div class="meta">
+      <span class="badge live">Chamberí, Madrid</span>
+      <span class="badge blue">Proposed for KNOWCASE Open Call 2027</span>
+      <span class="badge ghost">Sónar+D × Fundación Cotec</span>
+    </div>
+  </div>
+</header>
+
+<section class="lead">
+  <div class="wrap">
+    <p class="eyebrow">The proposal</p>
+    <p>Ember is a solar-powered local AI in the KNOWCASE window on Cea Bermúdez, running only on
+      the sun they collect. When the sun is up they wake and talk with whoever is on the street.
+      When it is gone they sleep, and the window scrolls the day's conversations instead. Their
+      energy meter is public, so a passer-by can read what Ember has left before reading a word.</p>
+    <p>Anyone can text Ember, message them on Signal or Telegram, or ring the number on the glass
+      and hold a spoken conversation that comes back in about a second. Ember answers the questions
+      people are told are too basic to ask about AI, and points toward how they could run and
+      govern their own. When the reserve runs low the phone line says so and asks the caller to
+      come back tomorrow, so the limit is something people meet rather than something a label
+      explains.</p>
+    <p>The small model runs on the machine in the window, on open-source software, so nothing said
+      to Ember is sent to a company to be understood. Sentiment across the day's conversations
+      fills the room as colour, legible from across the pavement. Every four months the
+      conversations become a book, one day to a chapter, licensed back to the public, with the data
+      in a commons anyone can join and everyone who refused left out.</p>
+    <p>Over 36 months the window becomes a public record of a city talking to a machine that runs
+      on what it can collect.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Awake, and asleep</p>
+    <h2>A day is a budget</h2>
+    <p>Ember's compute is off the grid. Their day is set by the weather over Madrid, so they meet
+      the street with a body, a budget, and a limit rather than as the always-on service the
+      industry sells as free and infinite. One Ember appears for each person in conversation, so
+      the window shows the street back to itself at the size it actually is.</p>
+
+    <figure>
+      <img src="assets/fig1-window-awake.png" alt="Window elevation, awake: Ember, a neon orange blob, awake in their room behind the glass, spawned three times for three people standing on the pavement, with an energy meter across the top of the window.">
+      <figcaption><b>Awake.</b> The meter across the glass reports the sun harvested today and the
+        reserve left. A presence camera counts who is engaging: one Ember appears for each person
+        in conversation, and someone walking past is never given one.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/fig2-window-asleep.png" alt="Window elevation, asleep: the room behind the glass becomes a night sky with a half moon and stars, Ember rests low and dim, and the day's conversations scroll across the glass.">
+      <figcaption><b>Asleep.</b> After sunset Ember powers down and the room becomes a night sky.
+        The day's conversations scroll across the glass as a recap, so the window still says
+        something while nobody is being listened to.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Talking to Ember</p>
+    <h2>Four ways in, none of them through a platform</h2>
+    <p>Every channel runs on open-source software on the machine in the window. Speech is
+      transcribed on the device, call audio is never stored, and refusal is designed in rather than
+      bolted on: a person can talk to Ember without being recorded, and if they decline, their
+      words are left out of the colour field, the commons, and the book.</p>
+
+    <ul class="chan">
+      <li><i class="dot"></i><b>SMS</b><span>Text the Spanish number on the glass from the pavement.</span></li>
+      <li><i class="dot"></i><b>A phone call</b><span>Ring Ember and talk. The reply comes back in about a second, and you can interrupt mid-sentence.</span></li>
+      <li><i class="dot"></i><b>Signal</b><span>Client and server both open, which is why it leads.</span></li>
+      <li><i class="dot"></i><b>Telegram</b><span>Offered for reach, with the signage saying plainly what it does and does not protect.</span></li>
+    </ul>
+
+    <figure>
+      <img src="assets/fig3-interaction-diagram.png" alt="Interaction diagram: a passer-by texts or speaks to Ember, their words travel a visible on-device path rather than off to a company, and the visitor decides through a consent and refusal prompt whether their words join the commons.">
+      <figcaption><b>The path a message takes.</b> Words travel a visible, on-device route, drawing
+        on a local corpus and powered by stored sun, and the visitor decides whether they join the
+        commons or are forgotten.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The mood of the day</p>
+    <h2>Colour you can read from across the street</h2>
+    <p>Sentiment across the day's conversations is blended into a field of colour that fills
+      Ember's room. It is aggregated and never individual, it fades over about ninety minutes so
+      the window shows the street as it is now, and every mood carries a texture and a word as well
+      as a hue, so the field reads in grayscale and to someone who does not see colour.</p>
+    <figure>
+      <img src="assets/fig4-colour-field.png" alt="The colour field: eight moods, each with a hue, a texture and a word, shown as a field filling the window, a ribbon of the day in order, and a strip of the season with one mark per day.">
+      <figcaption><b>Anger, anxiety, sadness, grief, curiosity, optimism, delight, calm.</b> A
+        ribbon shows the day in order and a strip shows the season, one mark per day, which is how
+        the colour reaches the book.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The commons</p>
+    <h2>The season ends in a public record</h2>
+    <p>Every four months the window's conversations become a book: one day to a chapter,
+      timestamped, with the day's numbers on the facing page and the season's colour record on the
+      cover. It carries what Ember was asked and answered, the topics that recurred, and the sun
+      harvested and spent to do it. It leaves out everyone who refused.</p>
+    <figure>
+      <img src="assets/fig5-the-book.png" alt="The book: a cover carrying the season's colour record, an open spread with a day's conversations on the left page and that day's numbers on the right, and a shelf of the nine books a 36-month run produces.">
+      <figcaption><b>Nine books over a 36-month run</b>, printed and given away at the window,
+        published as a free PDF, with the data behind them in a commons anyone can join.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Why</p>
+    <h2>Computation with a limit you can see</h2>
+    <div class="grid">
+      <div class="card">
+        <p><b>The data centre is sold as weightless.</b> It is not. The same industry that promises
+          an infinite, frictionless AI sites data centres in fragile places and declines to run
+          them on the sun even where the sun is free.</p>
+      </div>
+      <div class="card">
+        <p><b>Ember puts that cost in a window</b>, at human scale, where a person can see it and
+          talk back to it. The energy meter is not a graphic. It is the actual state of the
+          battery.</p>
+      </div>
+      <div class="card warm">
+        <p><b>Own the model, not only the data.</b> Ember is a front door to how a group of people
+          could pool, govern, and run a small model of their own, made approachable for someone who
+          has never thought about any of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Made by</p>
+    <h2>The team</h2>
+    <div class="people">
+      <div class="person">
+        <p class="role">Creative technologist, interactive designer, artist</p>
+        <h3>Phoenix Perry</h3>
+        <p>Reader at University of the Arts London, researching embodied interaction, small-data
+          machine learning, and data commons. Co-creator of InteractML, founder of the Code
+          Liberation Foundation, and Research Lead on a UKRI AHRC Braid-funded federated data
+          commons for creative communities.</p>
+      </div>
+      <div class="person">
+        <p class="role">Creative technologist, interactive designer, artist, sound design</p>
+        <h3>Portrait XO</h3>
+        <p>Transdisciplinary artist, musician, and data activist working across sound, AI, and
+          ecological futures. First recipient of the German human-AI Jazzki Award, founder of SOUND
+          OBSESSED, with residencies including Sónar+D and the ZKM/Hellerau Global Sonic Research
+          Residency.</p>
+      </div>
+      <div class="person">
+        <p class="role">Collaborator, interactive machine learning</p>
+        <h3>Rebecca Fiebrink</h3>
+        <p>Professor of Creative Computing at UAL's Creative Computing Institute and creator of
+          Wekinator, one of the first real-time interactive machine-learning tools for creative
+          practice.</p>
+      </div>
+      <div class="person">
+        <p class="role">Advisor, climate and economic policy</p>
+        <h3>Calder Tsuyuki-Tomlinson</h3>
+        <p>Fellow in Global Economic Governance at the United Nations University Centre for Policy
+          Research, working on the UN Pact for the Future and the Beyond GDP agenda across
+          economic, climate, and biodiversity governance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Ember</strong> is a proposal for KNOWCASE, the street-level exhibition space at
+      Fundación Cotec's Madrid headquarters, submitted to the KNOWCASE Open Call 2027, an
+      initiative of Sónar+D and Fundación Cotec. It has not been commissioned or exhibited.</p>
+    <p class="note">This page describes the artwork only. Budget, supplier pricing, and the
+      technical dossier are not published here.</p>
+    <p style="margin-top:24px">Ember uses they/them. Figures built in the Ember design system.</p>
+  </div>
+</footer>
+
 </body>
 </html>
