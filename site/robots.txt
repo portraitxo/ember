@@ -1,0 +1,4 @@
+# This project page is deliberately not indexed. It documents a proposal that has
+# not been commissioned or exhibited. Please do not crawl, index, or archive it.
+User-agent: *
+Disallow: /
